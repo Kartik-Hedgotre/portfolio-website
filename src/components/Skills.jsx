@@ -56,8 +56,20 @@ const containerVariants = {
 };
 
 const cardVariants = {
-  hidden:  { opacity: 0, y: 28, scale: 0.92 },
-  visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.4, ease: 'easeOut' } },
+  hidden: {
+    opacity: 0,
+    y: 50,
+    scale: 0.85,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
 };
 
 /* ─── SkillCard ─────────────────────────────────────────────────────── */
@@ -90,7 +102,7 @@ export default function Skills() {
       variants={sectionVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.15 }}
+      viewport={{ once: false, amount: 0.15 }}
       className="relative overflow-hidden px-4 py-20 sm:px-8 sm:py-24"
       style={{
         background: 'linear-gradient(180deg, #5B11C8 0%, #3B0A8F 50%, #5B11C8 100%)',
@@ -135,7 +147,7 @@ export default function Skills() {
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
+            viewport={{ once: false, amount: 0.1 }}
             className="grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6"
           >
             {skills.map(({ name, Icon, color }) => (

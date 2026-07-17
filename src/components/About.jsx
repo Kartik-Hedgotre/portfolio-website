@@ -60,7 +60,7 @@ function SectionHeading() {
       variants={fadeFromTop}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.4 }}
+      viewport={{ once: false, amount: 0.4 }}
       className="mb-16 flex flex-col items-center gap-3"
     >
       {/* eye-brow label */}
@@ -213,7 +213,7 @@ export default function About() {
             variants={fadeFromLeft}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: false, amount: 0.3 }}
             className="flex w-full flex-col gap-6 text-center lg:w-1/2 lg:text-left"
           >
             {/* name + subtitle */}
@@ -279,7 +279,7 @@ export default function About() {
             variants={fadeFromRight}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: false, amount: 0.3 }}
             className="flex w-full justify-center lg:w-1/2 lg:justify-end"
           >
             <PortraitImage />
