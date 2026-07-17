@@ -5,19 +5,17 @@ import { motion, AnimatePresence } from 'framer-motion';
 const educationData = [
   {
     id: 'edu-ms',
-    degree: "Master's of Science in Information Systems",
-    institution: 'Northeastern University, Boston, MA',
-    gpa: '3.8',
-    timeline: 'Sep 2022 - August 2024 | Graduated',
+    degree: "Bachlor of Computer Engineering",
+    institution: 'Mumbai univerity',
+    gpa: '8.2',
+    timeline: 'July 2024 - Sep 2028 | Pursuing',
     // Using high-quality educational placeholder images. Replace with your local assets if needed.
     image: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=600',
     courses: [
-      'Program Structures and Algorithms',
+      'Data Structures and Algorithms',
       'Web Development Tools & Methods',
-      'Web Design / User Experience Engineering',
       'Software Quality Control and Management',
-      'Concepts of Object Oriented Design',
-      'Application Engineering and Development',
+      'Concepts of Object Oriented programming & Design',
       'Database Management and Database Design'
     ]
   },
