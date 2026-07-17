@@ -7,7 +7,7 @@ const socials = [
   {
     id: 'social-linkedin',
     Icon: FaLinkedinIn,
-    href: 'https://www.linkedin.com/in/kartik',
+    href: 'https://www.linkedin.com/in/kartik-hedgotre-b206382b9/',
     label: 'LinkedIn',
     defaultColor: '#0A66C2',
     hoverBg: '#0A66C2',
@@ -16,7 +16,7 @@ const socials = [
   {
     id: 'social-github',
     Icon: FaGithub,
-    href: 'https://github.com/kartik',
+    href: 'https://github.com/Kartik-Hedgotre/',
     label: 'GitHub',
     defaultColor: '#00E5FF',
     hoverBg: '#000000',
@@ -25,7 +25,7 @@ const socials = [
   {
     id: 'social-leetcode',
     Icon: SiLeetcode,
-    href: 'https://leetcode.com/kartik',
+    href: 'https://leetcode.com/u/kaartik_1221/',
     label: 'LeetCode',
     defaultColor: '#FFA116',
     hoverBg: '#FFA116',
@@ -34,7 +34,7 @@ const socials = [
   {
     id: 'social-codeforces',
     Icon: SiCodeforces,
-    href: 'https://codeforces.com/profile/kartik',
+    href: 'https://codeforces.com/profile/Kartik_Hedgotre',
     label: 'Codeforces',
     defaultColor: '#1F8FFF',
     hoverBg: '#1F8FFF',

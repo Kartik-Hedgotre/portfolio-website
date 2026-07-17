@@ -35,20 +35,20 @@ const contactLinks = [
   {
     id:    'about-email',
     Icon:  FaEnvelope,
-    label: 'kartik@example.com',
+    label: 'kartikhedgotre50@gmail.com',
     href:  'mailto:kartik@example.com',
   },
   {
     id:    'about-github',
     Icon:  FaGithub,
     label: 'github.com/kartik',
-    href:  'https://github.com/kartik',
+    href:  'https://github.com/Kartik-Hedgotre/',
   },
   {
     id:    'about-linkedin',
     Icon:  FaLinkedinIn,
     label: 'linkedin.com/in/kartik',
-    href:  'https://linkedin.com/in/kartik',
+    href:  'https://www.linkedin.com/in/kartik-hedgotre-b206382b9/',
   },
 ];
 

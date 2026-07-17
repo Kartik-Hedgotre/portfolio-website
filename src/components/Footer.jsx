@@ -21,8 +21,8 @@ const quickLinks = [
 
 // ── Social Icons Data Configuration (YouTube & HackerRank Removed) ───
 const socialIcons = [
-  { Icon: FaLinkedinIn, href: 'https://linkedin.com/in/kartik-hedgotre', label: 'LinkedIn' },
-  { Icon: FaGithub, href: 'https://github.com/kartik-hedgotre', label: 'GitHub' },
+  { Icon: FaLinkedinIn, href: 'https://www.linkedin.com/in/kartik-hedgotre-b206382b9/', label: 'LinkedIn' },
+  { Icon: FaGithub, href: 'https://github.com/Kartik-Hedgotre/', label: 'GitHub' },
   { Icon: FaEnvelope, href: 'mailto:kartikhedgotre50@gmail.com', label: 'Email Link' },
   { Icon: FaTelegramPlane, href: 'https://t.me/kartik-hedgotre', label: 'Telegram' }
 ];
