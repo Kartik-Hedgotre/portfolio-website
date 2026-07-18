@@ -11,12 +11,12 @@ import {
 
 // ── Quick Links Navigation Data ──────────────────────────────────────
 const quickLinks = [
-  { name: 'home', target: 'Home' },
-  { name: 'about', target: 'About' },
-  { name: 'skills', target: 'Skills' },
-  { name: 'education', target: 'Education' },
-  { name: 'work', target: 'Projects' }, 
-  { name: 'experience', target: 'Experience' }
+  { name: 'Home', target: 'home' },
+  { name: 'About', target: 'about' },
+  { name: 'Skills', target: 'skills' },
+  { name: 'Education', target: 'Education' },
+  { name: 'Projects', target: 'Projects' }, 
+  { name: 'Experience', target: 'Experience' }
 ];
 
 // ── Social Icons Data Configuration (YouTube & HackerRank Removed) ───
