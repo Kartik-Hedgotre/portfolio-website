@@ -222,7 +222,7 @@ export default function About() {
                 Kartik
               </h3>
               <p className="mt-1.5 bg-gradient-to-r from-violet-600 to-fuchsia-500 bg-clip-text text-base font-semibold text-transparent">
-                Full-Stack Developer &amp; UI/UX Enthusiast
+                Full-Stack Developer & Competative programmer
               </p>
             </div>
 
