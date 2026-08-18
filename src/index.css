@@ -79,3 +79,25 @@ html.lenis body {
 .lenis.lenis-smooth iframe {
   pointer-events: none;
 }
+
+/* One-time avatar auto-tilt animation used on first page load */
+.avatar-auto-tilt {
+  transform-style: preserve-3d;
+  will-change: transform;
+  animation: avatarAutoTilt 1.2s cubic-bezier(.2,.9,.3,1) both;
+}
+
+@keyframes avatarAutoTilt {
+  0% {
+    transform: none;
+  }
+  20% {
+    transform: rotateX(18deg) rotateY(-14deg) scale(1.04);
+  }
+  60% {
+    transform: rotateX(-10deg) rotateY(10deg) scale(1.02);
+  }
+  100% {
+    transform: none;
+  }
+}
