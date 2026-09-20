@@ -4,9 +4,6 @@ This template provides a minimal setup to get React working in Vite with HMR and
 
 Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
 ## React Compiler
 
 The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
@@ -14,3 +11,32 @@ The React Compiler is not enabled on this template because of its impact on dev 
 ## Expanding the Oxlint configuration
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+
+# Kartik's Portfolio
+
+## Contact email setup
+
+The contact form sends messages through the Express API in `server/index.js` using SMTP. SMTP credentials stay on the server and are never exposed to the browser.
+
+1. Copy `.env.example` to `.env`.
+2. Add SMTP credentials. For Gmail, use an App Password rather than your normal account password.
+3. Set `CONTACT_TO` to the inbox that should receive portfolio messages.
+4. Run the full local app:
+
+```bash
+npm run dev:all
+```
+
+The Vite frontend runs on `http://localhost:5173` and proxies `/api` requests to the API on port `3001`. The API health check is available at `http://localhost:3001/api/health`.
+
+## Deployment
+
+Deploy the frontend and Node server as services that can reach each other. Add the SMTP variables from `.env.example` to the server environment. If the frontend and API use different domains, set `VITE_API_URL` to the public API URL before building the frontend.
+
+Start the API in production with:
+
+```bash
+npm run server
+```
+
+Never commit `.env` or real SMTP credentials.

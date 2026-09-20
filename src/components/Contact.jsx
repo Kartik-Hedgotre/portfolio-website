@@ -6,18 +6,38 @@ export default function Contact() {
     name: '',
     email: '',
     phone: '',
-    message: ''
+    message: '',
+    website: ''
   });
+  const [status, setStatus] = useState({ type: 'idle', message: '' });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission logic here (e.g., API call or EmailJS)
-    console.log('Form Submitted Successfully:', formData);
+    setStatus({ type: 'loading', message: 'Sending your message...' });
+
+    try {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/contact`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+      if (!response.ok) throw new Error(result.message || 'Unable to send your message.');
+
+      setFormData({ name: '', email: '', phone: '', message: '', website: '' });
+      setStatus({ type: 'success', message: result.message });
+    } catch (error) {
+      setStatus({
+        type: 'error',
+        message: error.message || 'Something went wrong. Please try again or email me directly.',
+      });
+    }
   };
 
   return (
@@ -56,6 +76,16 @@ export default function Contact() {
           {/* Right Column: Interactive Form */}
           <div className="w-full md:w-1/2">
             <form onSubmit={handleSubmit} className="space-y-5">
+              <input
+                type="text"
+                name="website"
+                value={formData.website}
+                onChange={handleChange}
+                tabIndex="-1"
+                autoComplete="off"
+                className="absolute -left-[9999px] h-px w-px opacity-0"
+                aria-hidden="true"
+              />
               
               {/* Name Input */}
               <div className="relative flex items-center">
@@ -67,7 +97,8 @@ export default function Contact() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full pl-12 pr-4 py-3.5 bg-[#e8eefc] border border-slate-400 rounded-lg text-gray-900 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-[#6b21a8]/40 focus:bg-white transition-all font-medium text-base shadow-sm"
+                  disabled={status.type === 'loading'}
+                  className="w-full pl-12 pr-4 py-3.5 bg-[#e8eefc] border border-slate-400 rounded-lg text-gray-900 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-[#6b21a8]/40 focus:bg-white transition-all font-medium text-base shadow-sm disabled:cursor-not-allowed disabled:opacity-60"
                 />
               </div>
 
@@ -81,7 +112,8 @@ export default function Contact() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full pl-12 pr-4 py-3.5 bg-[#e8eefc] border border-slate-400 rounded-lg text-gray-900 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-[#6b21a8]/40 focus:bg-white transition-all font-medium text-base shadow-sm"
+                  disabled={status.type === 'loading'}
+                  className="w-full pl-12 pr-4 py-3.5 bg-[#e8eefc] border border-slate-400 rounded-lg text-gray-900 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-[#6b21a8]/40 focus:bg-white transition-all font-medium text-base shadow-sm disabled:cursor-not-allowed disabled:opacity-60"
                 />
               </div>
 
@@ -94,7 +126,8 @@ export default function Contact() {
                   placeholder="Phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  className="w-full pl-12 pr-4 py-3.5 bg-[#e8eefc] border border-slate-400 rounded-lg text-gray-900 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-[#6b21a8]/40 focus:bg-white transition-all font-medium text-base shadow-sm"
+                  disabled={status.type === 'loading'}
+                  className="w-full pl-12 pr-4 py-3.5 bg-[#e8eefc] border border-slate-400 rounded-lg text-gray-900 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-[#6b21a8]/40 focus:bg-white transition-all font-medium text-base shadow-sm disabled:cursor-not-allowed disabled:opacity-60"
                 />
               </div>
 
@@ -108,7 +141,8 @@ export default function Contact() {
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  className="w-full pl-12 pr-4 py-3.5 bg-[#e8eefc] border border-slate-400 rounded-lg text-gray-900 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-[#6b21a8]/40 focus:bg-white transition-all font-medium text-base shadow-sm resize-y"
+                  disabled={status.type === 'loading'}
+                  className="w-full pl-12 pr-4 py-3.5 bg-[#e8eefc] border border-slate-400 rounded-lg text-gray-900 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-[#6b21a8]/40 focus:bg-white transition-all font-medium text-base shadow-sm resize-y disabled:cursor-not-allowed disabled:opacity-60"
                 />
               </div>
 
@@ -116,11 +150,26 @@ export default function Contact() {
               <div className="flex justify-end pt-2">
                 <button
                   type="submit"
-                  className="flex items-center gap-2 bg-[#220cb3] hover:bg-[#1a098c] text-white px-7 py-3 rounded-lg font-bold text-base transition-all duration-200 cursor-pointer shadow-[0_4px_14px_rgba(34,12,179,0.4)] active:scale-98"
+                  disabled={status.type === 'loading'}
+                  className="flex items-center gap-2 bg-[#220cb3] hover:bg-[#1a098c] text-white px-7 py-3 rounded-lg font-bold text-base transition-all duration-200 cursor-pointer shadow-[0_4px_14px_rgba(34,12,179,0.4)] active:scale-98 disabled:cursor-wait disabled:opacity-60"
                 >
-                  Submit <FaPaperPlane className="text-sm" />
+                  {status.type === 'loading' ? 'Sending...' : 'Send message'} <FaPaperPlane className="text-sm" />
                 </button>
               </div>
+
+              {status.type !== 'idle' && status.type !== 'loading' && (
+                <p
+                  role="status"
+                  aria-live="polite"
+                  className={`rounded-lg px-4 py-3 text-sm font-semibold ${
+                    status.type === 'success'
+                      ? 'bg-emerald-50 text-emerald-700'
+                      : 'bg-red-50 text-red-700'
+                  }`}
+                >
+                  {status.message}
+                </p>
+              )}
 
             </form>
           </div>
