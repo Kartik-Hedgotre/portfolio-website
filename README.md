@@ -29,14 +29,18 @@ npm run dev:all
 
 The Vite frontend runs on `http://localhost:5173` and proxies `/api` requests to the API on port `3001`. The API health check is available at `http://localhost:3001/api/health`.
 
-## Deployment
+## Vercel deployment
 
-Deploy the frontend and Node server as services that can reach each other. Add the SMTP variables from `.env.example` to the server environment. If the frontend and API use different domains, set `VITE_API_URL` to the public API URL before building the frontend.
+The `api/` files expose the Express contact routes as Vercel Functions, so the frontend and email API use the same deployment. Add these variables in Vercel under **Project Settings -> Environment Variables** for the `Production` environment:
 
-Start the API in production with:
-
-```bash
-npm run server
+```text
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_SECURE=false
+SMTP_USER=your-gmail-address
+SMTP_PASS=your-16-character-gmail-app-password
+CONTACT_TO=your-inbox-address
+MAIL_FROM=your-gmail-address
 ```
 
-Never commit `.env` or real SMTP credentials.
+Redeploy after adding or changing environment variables. `VITE_API_URL` should normally be left unset because the form calls the same-origin `/api/contact` function. Never commit `.env` or real SMTP credentials.

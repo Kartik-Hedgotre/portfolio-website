@@ -49,7 +49,6 @@ function isRateLimited(ip) {
   return false;
 }
 
-
 function getTransporter() {
   if (
     !process.env.SMTP_HOST ||
@@ -164,6 +163,10 @@ ${cleanMessage}`,
   }
 });
 
-app.listen(port, "0.0.0.0", () => {
-  console.log(`Contact API listening on port ${port}`);
-});
+export default app;
+
+if (!process.env.VERCEL) {
+  app.listen(port, "0.0.0.0", () => {
+    console.log(`Contact API listening on port ${port}`);
+  });
+}
